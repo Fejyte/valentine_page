@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nneka 💛</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;600&display=swap');
+
+        :root {
+            --bg-color: #fff0f5;
+            /* Lavender Blush */
+            --text-color: #881337;
+            /* Rose 900 */
+            --primary-green: #e11d48;
+            /* Rose 600 */
+            --primary-green-hover: #be123c;
+            /* Rose 700 */
+            --accent-yellow: #FACC15;
+            --rose-shadow: #fda4af;
+            /* Rose 300 for heart shadows */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Great Vibes', cursive;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Floating Background Hearts */
+        #heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-heart {
+            position: absolute;
+            color: rgba(253, 224, 71, 0.4);
+            bottom: -50px;
+            animation: floatUpBg linear infinite;
+        }
+
+        @keyframes floatUpBg {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            color: var(--text-color);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+            position: relative;
+            min-height: 80px;
+        }
+
+        .btn {
+            padding: 16px 48px;
+            font-family: 'Inter', sans-serif;
+            /* Keep buttons legible */
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            outline: none;
+            user-select: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-yes {
+            background-color: var(--primary-green);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-yes:hover {
+            background-color: var(--primary-green-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-no {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+            position: relative;
+            z-index: 100;
+            /* Ensure it stays on top */
+            transition: all 0.2s ease;
+            /* Smoother movement */
+        }
+
+        .btn-no:hover {
+            background-color: rgba(225, 29, 72, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Celebration Screen */
+        .celebration-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
+            z-index: 20;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s ease;
+        }
+
+        .celebration-container.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .celebration-msg {
+            font-size: 5rem;
+            /* Cursive & Big */
+            margin-top: 1rem;
+            color: var(--text-color);
+            max-width: 90%;
+            line-height: 1.1;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--rose-shadow);
+            animation: floatUp 4s ease-in infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .celebration-msg {
+                font-size: 3.5rem;
+            }
+
+            .btn {
+                padding: 12px 32px;
+                font-size: 1.1rem;
+            }
+
+            .rose-garden {
+                height: 120px;
+            }
+
+            .buttons-container {
+                gap: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Stack on tiny screens? User didn't ask, but safe for layout */
+            /* Actually user preferred side by side "Two buttons side by side". Keeping row but shrinking gap */
+            .buttons-container {
+                flex-direction: row;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="heart-bg"></div>
+
+    <div class="container" id="mainCard">
+        <h1>Nneka, will you be my Valentine?</h1>
+
+        <div class="buttons-container">
+            <button class="btn btn-yes" id="yesBtn">Yes</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <!-- Celebration Screen -->
+    <div class="celebration-container" id="celebrationView">
+        <div class="celebration-msg">Hooray!<br>Looking forward to wining and dining you ❤️</div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const mainCard = document.getElementById('mainCard');
+        const celebrationView = document.getElementById('celebrationView');
+        const heartBg = document.getElementById('heart-bg');
+        let scaleFactor = 1;
+
+        // 1. Background Floating Hearts Animation
+        function createBgHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('bg-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            // Varied speeds for natural feel
+            const duration = Math.random() * 10 + 15; // 15s to 25s
+            heart.style.animationDuration = duration + 's';
+            // Increased size as requested (Red & Bigger)
+            heart.style.fontSize = (Math.random() * 60 + 60) + 'px'; // 60px to 120px
+            heartBg.appendChild(heart);
+
+            // Remove after animation completes
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+
+        // Start creating hearts intermittently
+        setInterval(createBgHeart, 1500);
+        // Pre-populate a few so it's not empty on load
+        for (let i = 0; i < 5; i++) createBgHeart();
+
+        // 3. Interactions ("No" Button Dodge)
+        // User requested to wait for click before moving
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton();
+            growYesButton();
+        });
+
+        function moveNoButton() {
+            if (window.getComputedStyle(noBtn).position !== 'absolute') {
+                noBtn.style.position = 'absolute';
+                noBtn.style.zIndex = '1000'; // Extra high to be safe
+            }
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+
+            // Ensure we use the full window dimensions minus the button size
+            // Adding a buffer so it doesn't touch the very edge
+            const buffer = 20;
+            const maxX = window.innerWidth - btnWidth - buffer;
+            const maxY = window.innerHeight - btnHeight - buffer;
+
+            // Random pos
+            const newX = Math.max(buffer, Math.random() * maxX);
+            const newY = Math.max(buffer, Math.random() * maxY);
+
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+
+            // Reparent if needed to let it float freely
+            if (noBtn.parentNode !== document.body) {
+                document.body.appendChild(noBtn);
+            }
+        }
+
+        function growYesButton() {
+            scaleFactor += 0.2;
+            yesBtn.style.transform = `scale(${scaleFactor})`;
+        }
+
+        // 4. Celebration
+        yesBtn.addEventListener('click', () => {
+            mainCard.classList.add('hidden');
+            if (noBtn.parentNode === document.body) noBtn.classList.add('hidden');
+            celebrationView.classList.add('active');
+            startConfetti();
+        });
+
+        function startConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 30 + 15) + 'px';
+                celebrationView.appendChild(heart);
+            }
+        }
+    </script>
+</body>
+
+</html>
